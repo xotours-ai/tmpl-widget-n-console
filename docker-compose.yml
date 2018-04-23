@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  console_api:
+    build: ./console/server
+    restart: always
+    ports:
+      - "23360:23360"
+
+  console_client:
+    build:
+      context: ./console/client
+      args:
+        REACT_APP_WEB_API_SERVER: http://localhost:23360/v1.0
+    restart: always
+    ports:
+      - "23361:5000"
+
+  widget:
+    build: ./widget
+    restart: always
+    ports:
+      - "23362:5000"

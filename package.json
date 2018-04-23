@@ -1,0 +1,26 @@
+{
+  "name": "tmpl-widget-n-console",
+  "version": "0.1.0",
+  "description": "Template project for the client side widget and server side console.",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "mobx": "^3.3.0",
+    "mobx-react": "^4.3.3",
+    "moment": "^2.18.1",
+    "node-less-chokidar": "^0.1.2",
+    "npm-run-all": "^4.1.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+  },
+  "scripts": {
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build && npm run post-build",
+    "post-build": "node scripts/postbuild.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-less-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-less-chokidar src/ -o src/ --watch --recursive"
+  }
+}
+
